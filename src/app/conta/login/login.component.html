@@ -1,0 +1,46 @@
+<div id="logreg-forms">
+  <div class="font-weight-normal controlColor border shadow-sm">
+    <div class="row">
+      <div class="col-12 pt-2">
+        <h1 class="h3 mb-3 font-weight-normal text-white" style="text-align:center">Login</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 pb-2">
+      <form novalidate (ngSubmit)="login()" [formGroup]="loginForm" id="account">
+
+        <div class="alert alert-danger" *ngIf="errors.length > 0">
+          <h5 id="msgRetorno">Opa! Alguma coisa não deu certo:</h5>
+          <ul>
+            <li *ngFor="let error of errors">{{ error }}</li>
+          </ul>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <input class="form-control mb-3" id="email" type="text" placeholder="E-mail (requerido)" formControlName="email"
+              [ngClass]="{'is-invalid': displayMessage.email }" />
+            <span class="text-danger" *ngIf="displayMessage.email">
+              <p [innerHTML]="displayMessage.email"></p>
+            </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <input class="form-control mb-3" id="password" type="password" placeholder="Senha (requerido)"
+              formControlName="password" [ngClass]="{'is-invalid': displayMessage.password }" />
+            <span class="text-danger" *ngIf="displayMessage.password">
+              <p [innerHTML]="displayMessage.password"></p>
+            </span>
+          </div>
+        </div>
+        <p>
+          <span><button class="btn  btn-block form-control controlColor" id="Login" [disabled]="!loginForm.valid"
+              type="submit">Login</button></span>
+        </p>
+      </form>
+    </div>
+  </div>

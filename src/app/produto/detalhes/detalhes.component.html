@@ -1,0 +1,77 @@
+<div class="container main-container">
+  <h4>Excluir {{ produto.nome }} </h4>
+  <br>
+  <h5>Você tem certeza disso?</h5>
+
+  <div class="row">
+    <div class="col-md-4">
+      <img src="{{ imagens }}{{ produto.imagem }}" style="width: 300px; height: 428px">
+    </div>
+    <div class="col-md-8">
+      <dl>
+        <div class="row">
+          <div class="col-md-6">
+            <dt>
+              Fornecedor
+            </dt>
+            <dd>
+              {{ produto.nomeFornecedor }}
+            </dd>
+          </div>
+          <div class="col-md-6">
+            <dt>
+              Nome
+            </dt>
+            <dd>
+              {{ produto.nome }}
+            </dd>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <dt>
+              Descrição
+            </dt>
+            <dd>
+              {{ produto.descricao }}
+            </dd>
+          </div>
+          <div class="col-md-6">
+            <dt>
+              Valor
+            </dt>
+            <dd>
+              {{ produto.valor | currency:'BRL':'symbol':'1.2-2':'pt'}}
+            </dd>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <dt>
+              DataCadastro
+            </dt>
+            <dd>
+              {{ produto.dataCadastro | date:'dd/MM/yyyy' }}
+            </dd>
+          </div>
+          <div class="col-md-6">
+            <dt>
+              Ativo?
+            </dt>
+            <dd>
+              <input [checked]="produto.ativo" class="check-box" disabled="disabled" type="checkbox">
+            </dd>
+          </div>
+        </div>
+      </dl>
+      <div class="row">
+        <div class="col-md-12">
+          <a class="btn btn-warning" [routerLink]="['/produtos/editar',produto.id]">Editar</a>&nbsp;
+          <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
